@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Audrina 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+  body {
+  font-family: 'Indie Flower', cursive;
+  background: linear-gradient(to bottom, #ffe6f0, #fff);
+  color: #333;
+  padding: 30px;
+  text-align: center;
+  overflow-y: auto;
+  min-height: 100vh;
+  margin: 0;
+  cursor: none;
+}
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    #letter {
+      max-width: 90%;
+      margin: 0 auto;
+      font-size: 1.3em;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      border: 2px dashed #ff99cc;
+      padding: 20px;
+      background: #fff0f5;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      display: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    #startButton {
+      padding: 14px 28px;
+      background: #ff99cc;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #startButton:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.5);
+    }
+
+    .heart {
+      position: fixed;
+      top: -20px;
+      color: #ff6fa1;
+      font-size: 24px;
+      animation: float 6s infinite ease-in;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(-50px);
+        opacity: 0;
+      }
+    }
+
+    /* Cursor sparkles */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ff66cc;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkleFade 1s ease-out forwards;
+      z-index: 10;
+    }
+
+    @keyframes sparkleFade {
+      to {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Click the button for a surprise n_n 💌</h1>
+  <button id="startButton">Click here :)</button>
+  <div id="letter"></div>
+
+  <script>
+    const button = document.getElementById("startButton");
+    const letterDiv = document.getElementById("letter");
+
+const message = `
+Hey Audrina 💖
+
+I don’t even know where to start… maybe with how we met on GaiaOnline, of all places. It sounds like a story someone would make up just to be cute, but it’s real. Just two souls scrolling through the same old digital world, somehow ending up on the same path. Who knew that something so small would grow into something so meaningful?
+
+From the very beginning, there was something about you. The way you speak, the way you carry yourself, it’s magnetic. Even online, you have this aura that pulls people in, like you light up the screen without even trying. I noticed it right away. It was impossible *not* to.
+
+And then the more we talked, the more I saw how much depth you have. You’re not just beautiful, though let’s not lie, you *are* stunning, but you’ve got this warmth in you. A gentleness that feels rare, like you were carved out of something softer than the rest of the world. But there’s fire in there too. You’re funny, quick, and sharp. You’ve got that edge that makes you glow brighter, like a star that knows exactly how bright it is.
+
+Your eyes? They’re hypnotizing. Not just in the physical way, though yeah, they’re ridiculous, but in the way they seem to carry entire stories. Like if I looked long enough, I’d see the entire galaxy reflected back. And when you smile, it feels like everything else just softens around you.
+
+I don’t know how you do it, Audrina. How you can make me feel calm and excited all at once. You’re this perfect contradiction of elegance and chaos, softness and strength, sweetness and wit. I’ve met a lot of people in life, but no one has ever made me feel the way you do.
+
+And I want to say thank you for being kind to me. For being patient when I ramble or overthink. For trusting me with little pieces of who you are. Every time we talk, I feel like I’m learning something new about you. And I want to keep learning. I want to keep discovering every little thought, every hidden laugh, every quiet fear you’ve got tucked away in that beautiful mind of yours.
+
+Even when we’re not talking, you’re on my mind. Songs remind me of you. Random jokes remind me of you. You’ve made a home in my thoughts without even trying, and honestly… I like it there.
+
+I hope you know how rare you are. How lucky the world is to have someone like you in it. And how lucky I feel just to know you, to call you someone I care about deeply. 
+
+You're radiant, Audrina. Not just in the way you look, but in the way you make people *feel*. I see that, and I admire it so much. You make the world softer, brighter, and a little more beautiful, just by being in it.
+
+So if you're reading this, I just want you to know: you’re unforgettable. You matter. And I’m thankful every day that our paths crossed, even if it was through a pixelated avatar and forum posts.
+
+I look forward to see what happens in the future, and I hope to one day call you mine forever.
+
+💗 Always,
+Aleksei
+`;
+
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 10 + 20 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    function createSparkle(x, y) {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.left = x + "px";
+      sparkle.style.top = y + "px";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      createSparkle(e.pageX, e.pageY);
+    });
+
+    button.addEventListener("click", () => {
+      button.style.display = "none";
+      letterDiv.style.display = "block";
+
+      let i = 0;
+      function typeLetter() {
+        if (i < message.length) {
+          letterDiv.textContent += message.charAt(i);
+          i++;
+          setTimeout(typeLetter, 30);
+        }
+      }
+      typeLetter();
+      setInterval(createHeart, 300);
+    });
+  </script>
+</body>
+</html>
